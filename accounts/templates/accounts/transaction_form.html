@@ -1,0 +1,53 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md-3"></div>
+
+	<div class="col-md-6">
+		<h5>Transaction Details:</h5>
+		<hr>
+		<div class="card card-body">
+			<p>Account Balance: Rs. {% if account_balance.amount__sum %}{{account_balance.amount__sum}}{% else %}0{% endif %}</p>
+            <form method="post" action="">
+                {% csrf_token %}
+                <table class="table table-sm">
+
+                    <tr style="display:none;">
+                        <td>Customer</td>
+                        <td>{{form.customer}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Amount</td>
+                        <td>{{form.amount}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Transaction type</td>
+                        <td>{{form.transaction_type}}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                                {% for message in messages %}
+                                <p id="messages">{{message}}</p>
+                                {% endfor %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="Submit"/></td>
+                    </tr>
+
+                </table>
+            </form>
+		</div>
+	</div>
+
+	<div class="col-md-3"></div>
+
+</div>
+{% endblock %}

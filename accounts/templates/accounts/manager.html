@@ -1,0 +1,48 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md-3"></div>
+
+	<div class="col-md-6">
+		<h5>Download Excel:</h5>
+		<hr>
+		<div class="card card-body">
+            <form method="get" action="">
+                {% csrf_token %}
+                <input type="text" name="customer_id" value={{customer_id}} style="display:none;">
+                <table class="table table-sm">
+                    <tr>
+                        <td>From Date</td>
+                        <td>To Date</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="date" name="start_date"/></td>
+                        <td><input type="date" name="end_date"/></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                                {% for message in messages %}
+                                <p id="messages">{{message}}</p>
+                                {% endfor %}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="Submit" value="Download"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+	</div>
+
+	<div class="col-md-3"></div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+django
+django-mathfilters
+xlsxwriter
+pandas
+django-pandas
